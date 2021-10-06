@@ -10,7 +10,7 @@ function NavBar() {
 	return (
 		<div>
 			<Menu>
-				<Link to="/home">
+				<Link to="/">
 					<Menu.Item
 						name="home"
 						// active={activeItem === "home"}

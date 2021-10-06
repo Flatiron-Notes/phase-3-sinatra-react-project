@@ -2,13 +2,28 @@ import React from "react";
 import Notes from "./Notes";
 import Homepage from "./Homepage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {useEffect, useState} from "react";
+
 
 function Body() {
+	const [ allNotes, setAllNotes ] = useState([])
+
+	function fetching() {
+	fetch('http://localhost:9292/notes')
+	.then((r) => r.json())
+	.then(data => setAllNotes(data))
+	}
+
+	useEffect(() => {
+		console.log("Re-Running...")
+		fetching();
+	  },[]);
+
 	return (
 		<>
 			<Switch>
-				<Route path="/home">
-					<Homepage />
+				<Route path="/">
+					<Homepage allNotes={allNotes} />
 				</Route>
 				<Route path="/notes">
 					<Notes />
