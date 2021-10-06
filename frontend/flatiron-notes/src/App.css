@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+table.ui.celled.padded.table {
+  margin:auto;
+  width:max-content;  
+  padding: 25px;
+  padding-left: 3px;
+  text-align: center;
+  background-color:rgb(253, 250, 235);
+  border: rgb(5, 5, 5) solid 1px;
+  /* display: inline-grid; */
+  box-shadow: 3px 4px #0c0c0b
+}
+
+table.table.headers {
+  font-size: larger;
+  color: crimson;
+}

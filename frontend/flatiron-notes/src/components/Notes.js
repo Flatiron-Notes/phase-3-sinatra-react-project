@@ -26,17 +26,17 @@ function Notes(props) {
 
 	return (
 		<div>
-			<h1>Notes Page</h1>
+			<h2 class="notes title">Notes Page</h2>
 			<table class="ui celled padded table">
-				<thead class="">
-					<tr class="">
-						<th class="single line">Created By</th>
-						<th class="">Note Title</th>
-						<th class="">Difficulty</th>
-						<th class="">Format</th>
+				<thead>
+					<tr>
+						<th>Created By</th>
+						<th>Note Title</th>
+						<th>Difficulty</th>
+						<th>Format</th>
 					</tr>
 				</thead>
-				<tbody class="">
+				<tbody>
 					{singleNote}
 				</tbody>
 			</table>
