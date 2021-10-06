@@ -12,12 +12,8 @@ function NoteDetail(props) {
     const [ noteComments, setNoteComments ] = useState([])
     const [newComment, setNewComment] =useState("")
     const [commentUser, setCommentUser] =useState("TESTUSER")
-    const [formData, setFormData] = useState({
-        note_id: "",
-        user_id: 1,
-        name: "",
-        text: ""
-    })
+    const [formData, setFormData] = useState("")
+    const [toggle, setToggle] = useState(false)
 
     const {  title, format, difficulty, user, comments, content, user_id } = loadedNote;
 
@@ -34,9 +30,8 @@ function NoteDetail(props) {
             setIsLoaded(true);
             setPosterName(note.user.name)
             setNoteComments(note.comments)
-            setFormData({...formData, note_id: note.id})
         })
-    }, [id]);
+    }, [toggle]);
 
     const singleComment = noteComments.map((comment) => (
             <Comments 
@@ -47,10 +42,6 @@ function NoteDetail(props) {
             user_id={comment.user_id}
             />
         ))
-    function handleForm(e) {
-        const key = e.target.name
-    } 
-
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -59,14 +50,19 @@ function NoteDetail(props) {
             headers: {
             "Content-Type": "application/json",
             },
-            body: JSON.stringify(),
+            body: JSON.stringify({     
+            note_id: id,
+            user_id: 1,
+            name: "Peter",
+            text: formData}),
             })
         .then(resp => resp.json())
-        .then(
-        console.log("Added this fuckin comment")
-        )
+        .then( setToggle(!toggle) )
+        setFormData("")
     }
-    
+
+
+    console.log(formData)
 return (
     <div className="detailed-note-obj">
         <h1>{title}</h1>
@@ -84,7 +80,7 @@ return (
         <div class="comment form">
             <form onSubmit={handleSubmit} class="ui reply form">
                 <div class="form">
-                    <textarea onChange={setNewComment} rows="3"></textarea>
+                    <textarea onChange={(e) => setFormData(e.target.value)} value={formData} type="input" rows="3"></textarea>
                 </div>
                 <br/>
                 <button class="ui icon primary left labeled button">
