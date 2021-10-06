@@ -11,8 +11,6 @@ function generateDifficulty(difficultyNum) {
     return difficultyRating
 }
 
-
-
 function NotesContainer(props) {
     const { id, title, format, difficulty, user_id } = props;
     //States
@@ -28,17 +26,16 @@ function NotesContainer(props) {
 
     fetchPosterName(user_id)
     
-    
     const starsNum = generateDifficulty(difficulty)
 
     return (
         <div className="column">
             <span className="note-link-obj">
-                {/* <Link to={`/notes/${id}`}> */}
+                <Link to={`/notes/${id}`}>
                     <h2>{title}</h2>
-                {/* </Link> */}
+                </Link>
                     <h4>Format: {format}</h4>
-                    <p>Difficulty: {starsNum} / 10 </p>
+                    <p>Difficulty: {starsNum} </p>
                     <h4>Uploaded by: {posterName ? `${posterName}` : "User Not Found"}</h4>
             </span>
             <br/>

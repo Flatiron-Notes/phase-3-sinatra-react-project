@@ -7,6 +7,7 @@ function Homepage(props) {
 
 	const formattedRecentNotes = recentNotes.map((recentNote) => {
 		return (
+			//NoteCard - with css stylings @: NotesContainer.js
 			<NotesContainer
 				key={recentNote.id}
 				id={recentNote.id}
@@ -39,16 +40,3 @@ function Homepage(props) {
 
 }
 export default Homepage;
-
-// const customizedCards = visibleCards.map((customCard) => {
-// 	return (
-// 		<CustomCard
-// 			key={customCard.id}
-// 			id={customCard.id}
-// 			image={customCard.image}
-// 			name={customCard.name}
-// 			creator={customCard.creator}
-// 			password={customCard.password}
-// 		/>
-// 	)
-// })
