@@ -1,20 +1,7 @@
 import React, {useState} from "react"
 function Comments(props) {
-    const {id, name, note_id, text, user_id} = props
-    const [toggle, setToggle] = useState(false)
-
-    function handleDelete(id) {
-        // delete backend
-        fetch(`http://localhost:9292/comments/${id}`, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json"
-        }})
-        .then(
-        setToggle(!toggle),
-        console.log("deleting...")
-        )
-    }
+    const {id, name, note_id, text, user_id, handleDelete} = props
+      
     return (
         <div>
                 <div class="comment">

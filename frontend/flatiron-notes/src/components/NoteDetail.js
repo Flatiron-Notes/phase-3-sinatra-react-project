@@ -25,21 +25,22 @@ function NoteDetail(props) {
         fetch(`http://localhost:9292/notes/${id}`)
         .then((resp) => resp.json())
         .then(note => {
-            //fetchComments(parseInt(id));
             setLoadedNote(note);
             setIsLoaded(true);
             setPosterName(note.user.name)
             setNoteComments(note.comments)
         })
-    }, [toggle]);
+    }, [id, toggle]);
 
     const singleComment = noteComments.map((comment) => (
-            <Comments 
+            <Comments
+            key={comment.id} 
             id={comment.id}
             note_id={comment.note_id}
             name={comment.name}
             text={comment.text}
             user_id={comment.user_id}
+            handleDelete={handleDelete}
             />
         ))
 
@@ -59,6 +60,17 @@ function NoteDetail(props) {
         .then(resp => resp.json())
         .then( setToggle(!toggle) )
         setFormData("")
+    }
+
+    function deleteComment(commentId) {
+        fetch(`http://localhost:9292/comments/${commentId}`, {
+                method: "DELETE",
+            })
+    }
+
+    function handleDelete(commentId) {
+        deleteComment(commentId)
+        setToggle(!toggle)
     }
 
 
