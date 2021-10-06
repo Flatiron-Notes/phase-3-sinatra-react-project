@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom'
 
+
 function NoteTable(props) {
-    const {user_id, title, difficulty, format, id, content} = props
+    const {user_id, title, difficulty, format, id, generateDifficulty} = props
 
     // Conners code
     const [ posterName, setPosterName ] = useState("")
@@ -16,18 +17,8 @@ function NoteTable(props) {
     }
 
     fetchPosterName(user_id)
-
-    const starEmoji = <i tabindex="0" aria-checked="false" aria-posinset="1" aria-setsize="3" class="active icon" role="radio"></i>
-    const difficultyNum = difficulty
     
-    function generateDifficulty(difficultyNum) {
-        let difficultyRating = "";
-            for (let i = difficultyNum; i > 0; i -= 1) {
-                difficultyRating += starEmoji;
-            }
-        return difficultyRating
-    }
-
+    const starsNum = generateDifficulty(difficulty)
 
 
     return(
@@ -40,7 +31,7 @@ function NoteTable(props) {
                         </td>
 						<td class="">
                             <div class="ui star rating" role="radiogroup" tabindex="-1">
-                                Need to generate difficulty stars
+                                {starsNum}
                             </div>
                         </td>
 						<td>{format}<br/><a href="#">18 studies</a></td>

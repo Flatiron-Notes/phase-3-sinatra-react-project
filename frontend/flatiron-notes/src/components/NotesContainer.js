@@ -1,18 +1,8 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom'
 
-const starEmoji = "⭐"
-
-function generateDifficulty(difficultyNum) {
-    let difficultyRating = "";
-        for (let i = difficultyNum; i > 0; i -= 1) {
-            difficultyRating += starEmoji;
-        }
-    return difficultyRating
-}
-
 function NotesContainer(props) {
-    const { id, title, format, difficulty, user_id } = props;
+    const { id, title, format, difficulty, user_id, generateDifficulty } = props;
     //States
     const [ posterName, setPosterName ] = useState("")
 

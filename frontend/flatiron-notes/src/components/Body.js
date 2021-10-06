@@ -24,14 +24,25 @@ function Body() {
 		fetching();
 	  },[]);
 
+
+	function generateDifficulty(difficultyNum) {
+		const starEmoji = "⭐"
+		let difficultyRating = "";
+			for (let i = difficultyNum; i > 0; i -= 1) {
+				difficultyRating += starEmoji;
+			}
+		return difficultyRating
+	}
+	
+
 	return (
 		<div className="body-div">
 			<Switch>
 				<Route exact path="/">
-					<Homepage allNotes={allNotes} />
+					<Homepage allNotes={allNotes} generateDifficulty={generateDifficulty}/>
 				</Route>
 				<Route exact path="/notes">
-					<Notes allNotes={allNotes}/>
+					<Notes allNotes={allNotes} generateDifficulty={generateDifficulty}/>
 				</Route>
 				<Route path="/notes/:id">
              		<NoteDetail allNotes={allNotes}/>

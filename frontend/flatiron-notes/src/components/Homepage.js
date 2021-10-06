@@ -1,7 +1,7 @@
 import NotesContainer from "./NotesContainer";
 
 function Homepage(props) {
-	const { allNotes } = props;
+	const { allNotes, generateDifficulty } = props;
 	
 	const recentNotes = allNotes.slice(-10)
 
@@ -15,9 +15,12 @@ function Homepage(props) {
 				format={recentNote.format}
 				difficulty={recentNote.difficulty}
 				user_id={recentNote.user_id}
+				generateDifficulty={generateDifficulty}
 			/>
 		)
 	})
+
+
 
 	
 
