@@ -15,6 +15,7 @@ function Homepage(props) {
 				format={recentNote.format}
 				difficulty={recentNote.difficulty}
 				user_id={recentNote.user_id}
+				user={recentNote.user}
 				generateDifficulty={generateDifficulty}
 			/>
 		)

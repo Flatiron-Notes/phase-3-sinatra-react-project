@@ -4,7 +4,7 @@ class NotesController < ApplicationController
     #return all Notes in our table
 
     get '/notes' do
-        Note.all.to_json(include: :comments)
+        Note.all.to_json(:include => [:user, :comments])
     end
 
     post '/notes' do
@@ -18,7 +18,7 @@ class NotesController < ApplicationController
 
     get '/notes/:id' do
         note = Note.find(params[:id])
-        note.to_json(include: :comments)
+        note.to_json(:include => [:user, :comments])
     end
 
     patch '/notes/:id' do

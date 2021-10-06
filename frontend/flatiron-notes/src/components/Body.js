@@ -10,7 +10,7 @@ import NoteDetail from "./NoteDetail";
 
 function Body() {
 	const [ allNotes, setAllNotes ] = useState([])
-
+	console.log(allNotes)
 	//let history = useHistory();
 
 	function fetching() {

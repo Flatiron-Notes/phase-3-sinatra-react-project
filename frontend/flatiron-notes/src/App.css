@@ -52,3 +52,11 @@ table.table.headers {
   font-size: larger;
   color: crimson;
 }
+div.ui.comments {
+  margin: auto;
+}
+
+div.comment.form {
+  width: 50%;
+  margin: auto;
+}

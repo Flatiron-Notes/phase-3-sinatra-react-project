@@ -4,7 +4,6 @@ import NoteTable from "./NoteTable";
 
 function Notes(props) {
 	const {allNotes, generateDifficulty} = props
-	console.log(allNotes)
 	const singleNote = allNotes.map((note) => (
 
 		<NoteTable
@@ -16,6 +15,7 @@ function Notes(props) {
 			content={note.content}
 			user_id={note.user_id}
 			generateDifficulty={generateDifficulty}
+			user={note.user}
 			/>
 	))
 	// const singleComment = allComments.map((comment) => (
