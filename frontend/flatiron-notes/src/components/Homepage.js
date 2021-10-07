@@ -2,9 +2,9 @@ import NotesContainer from "./NotesContainer";
 
 function Homepage(props) {
 	const { allNotes, generateDifficulty } = props;
-	
-	const recentNotes = allNotes.slice(-10)
 
+	const recentNotes = allNotes.slice(-10);
+	console.log(allNotes);
 	const formattedRecentNotes = recentNotes.map((recentNote) => {
 		return (
 			//NoteCard - with css stylings @: NotesContainer.js
@@ -18,29 +18,17 @@ function Homepage(props) {
 				user={recentNote.user}
 				generateDifficulty={generateDifficulty}
 			/>
-		)
-	})
-
-
-
-	
+		);
+	});
 
 	return (
 		<div>
 			<h1>Home Page</h1>
 			<h3> THIS WILL HAVE INSTRUCTIONS </h3>
-			<br/>
+			<br />
 			<h4> Most Recent Note Uploads!</h4>
-			<div className="row">
-				{formattedRecentNotes}
-			</div>
-			
-
-
-
-
+			<div className="row1">{formattedRecentNotes}</div>
 		</div>
 	);
-
 }
 export default Homepage;
