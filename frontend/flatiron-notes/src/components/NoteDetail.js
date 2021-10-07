@@ -70,11 +70,16 @@ function NoteDetail(props) {
 			.then(setToggle(!toggle));
 		setFormData("");
 	}
-
+	function handleDeleteNote() {
+		fetch(`http://localhost:9292/notes/${id}`, {
+			method: "DELETE",
+		});
+	}
 	function deleteComment(commentId) {
 		fetch(`http://localhost:9292/comments/${commentId}`, {
 			method: "DELETE",
 		});
+		console.log("Delete");
 	}
 
 	function handleDelete(commentId) {
@@ -134,8 +139,14 @@ function NoteDetail(props) {
 										Difficulty: {difficulty}
 									</Label>
 									<Link to={`/notes/${id}/edit`}>
-										<Label color="red">Edit Note</Label>
+										<Label color="blue">Edit Note</Label>
 									</Link>
+									<Label
+										color="red"
+										onClick={handleDeleteNote}
+									>
+										Delete Note
+									</Label>
 								</Label.Group>
 							</Container>
 						</Grid.Column>
