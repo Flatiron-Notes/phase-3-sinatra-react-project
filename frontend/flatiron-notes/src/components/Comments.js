@@ -3,6 +3,8 @@ import { Divider, Container, Button } from "semantic-ui-react";
 function Comments(props) {
 	const { id, name, note_id, text, user_id, handleDelete } = props;
 
+	const isLoggedInUsername = localStorage.getItem("username")
+
 	return (
 		<div>
 			<Container textAlign="left">
@@ -12,7 +14,7 @@ function Comments(props) {
                         <img src="https://react.semantic-ui.com/images/avatar/small/matt.jpg"/>
                     </div> */}
 					<div class="content">
-						<a class="author">{name}</a>
+						<h4 class="author">{name}</h4>
 					</div>
 					<br />
 
@@ -20,10 +22,11 @@ function Comments(props) {
 				</div>
 				<br />
 			</Container>
-
-			<Button onClick={(e) => handleDelete(id)} color="grey">
-				Delete Comment
-			</Button>
+			{isLoggedInUsername === name?
+				<Button onClick={(e) => handleDelete(id)} color="grey">
+					Delete Comment
+				</Button> : null
+			}
 		</div>
 	);
 }

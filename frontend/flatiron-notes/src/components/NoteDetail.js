@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import Comments from "./Comments";
+
+
 //import styled from 'styled-components';
 import {
 	Icon,
@@ -25,6 +27,8 @@ function NoteDetail(props) {
 
 	const { title, format, difficulty, user, comments, content, user_id } =
 		loadedNote;
+
+	const isLoggedInId = parseInt(localStorage.getItem("user_id"))
 
 	const id = parseInt(useParams().id);
 	let history = useHistory();
@@ -140,10 +144,13 @@ function NoteDetail(props) {
 									<Label color="green">
 										Difficulty: {difficulty}
 									</Label>
-									<Label color="red" onClick={(e) => handleDeleteNote(id)} > Delete Note </Label>
-									<Link to={`/notes/${id}/edit`}>
-										<Label color="blue">Edit Note </Label>
-									</Link>
+									{(isLoggedInId) === user_id?
+										<>
+										<Label color="red" onClick={(e) => handleDeleteNote(id)} > Delete Note </Label>
+										<Link to={`/notes/${id}/edit`}>
+											<Label color="blue">Edit Note </Label>
+										</Link>
+										</> : null }
 								</Label.Group>
 							</Container>
 						</Grid.Column>

@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import { Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import Login from "./Login";
 
 function NavBar() {
 	// const [activeItem, setActiveItem] = useState("");
 	// function handleItemClick(e) {
 	// 	setActiveItem(e.target.name);
 	// }
+  const [loggedInStatus, setLoggedInStatus] = useState(false)
+  console.log(loggedInStatus)
+  function retrieveLoggedInStatus(lis) {
+	  setLoggedInStatus(lis)
+  }
+
 	return (
 		<div>
 			<Menu>
@@ -30,16 +37,21 @@ function NavBar() {
 					</Menu.Item>
 				</Link>
 
-				<Link to="/new_note">
-					<Menu.Item
-						name="new_note"
-						// active={activeItem === "new_note"}
-						// onClick={handleItemClick}
-					>
-						Add new note
+				{loggedInStatus?
+					<Link to="/new_note">
+						<Menu.Item
+							name="new_note"
+							// active={activeItem === "new_note"}
+							// onClick={handleItemClick}
+						>
+							Add new note
+						</Menu.Item>
+					</Link> : null
+				}
+					<Menu.Item style={{float: "right"}}>
+						<Login retrieveLoggedInStatus={retrieveLoggedInStatus}/>
 					</Menu.Item>
-				</Link>
-			</Menu>
+			</Menu>			
 		</div>
 	);
 }

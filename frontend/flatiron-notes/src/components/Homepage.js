@@ -24,7 +24,8 @@ function Homepage(props) {
 	return (
 		<div>
 			<h1>Home Page</h1>
-			<h3> THIS WILL HAVE INSTRUCTIONS </h3>
+			<h4> Welcome to the Flatiron School Noteshare! If you have a notes file you would like to share, simply log in to the application and click on the 'Add A Note' tab. </h4>
+			<h4> If you would like to see a full list of student notes uploaded, click on the 'Notes' tab above</h4>
 			<br />
 			<h4> Most Recent Note Uploads!</h4>
 			<div className="row1">{formattedRecentNotes}</div>

@@ -2,7 +2,8 @@ import React from "react";
 import "../App.css";
 import Header from "./Header";
 import NavBar from "./NavBar";
-import Login from "./Login";
+import { useState } from "react";
+
 import Body from "./Body";
 
 function App() {
@@ -11,8 +12,7 @@ function App() {
 	return (
 		<div className="App">
 			<Header />
-			<NavBar />
-			<Login />
+			<NavBar/>
 			<Body />
 		</div>
 	);
