@@ -46,6 +46,7 @@ function Body() {
 				<Route exact path="/notes">
 					<Notes
 						allNotes={allNotes}
+						setAllNotes={setAllNotes}
 						generateDifficulty={generateDifficulty}
 					/>
 				</Route>

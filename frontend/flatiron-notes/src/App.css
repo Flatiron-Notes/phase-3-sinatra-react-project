@@ -37,12 +37,12 @@
   }
 }
 table.ui.celled.padded.table {
+  padding-top: 20px;
   margin:auto;
   width:max-content;  
   padding: 25px;
-  padding-left: 3px;
   text-align: center;
-  background-color:rgb(253, 250, 235);
+  background-color:rgba(226, 236, 248, 0.945);
   border: rgb(5, 5, 5) solid 1px;
   /* display: inline-grid; */
   box-shadow: 3px 4px #0c0c0b
@@ -59,4 +59,10 @@ div.ui.comments {
 div.comment.form {
   width: 50%;
   margin: auto;
+}
+
+.ui.icon.input {
+  margin: auto;
+  width: 400px;
+  padding-bottom: 20px;
 }

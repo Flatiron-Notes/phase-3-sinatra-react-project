@@ -1,38 +1,41 @@
-import Comments from "./Comments";
 import NoteTable from "./NoteTable";
-// returns all notes
+import React, {useState} from 'react'
 
 function Notes(props) {
-	const {allNotes, generateDifficulty} = props
-	const singleNote = allNotes.map((note) => (
+	const [search, setSearch] = useState("")
+	const {allNotes, setAllNotes, generateDifficulty} = props
 
-		<NoteTable
-			key={note.id}
-			id={note.id} 	
-			title={note.title}
-			format={note.format}
-			difficulty={note.difficulty}
-			content={note.content}
-			user_id={note.user_id}
-			generateDifficulty={generateDifficulty}
-			user={note.user}
-			/>
+	const results = (allNotes.filter ((note) => search === "" ||
+	note.title.toLowerCase().includes(search.toLowerCase()) || 
+	note.user.name.toLowerCase().includes(search.toLowerCase())
 	))
-	// const singleComment = allComments.map((comment) => (
 
-
-	// ))
-
-	//map through allNotes and get specific values
-
+		const singleNote = results.map((note) => (
+			<NoteTable
+				key={note.id}
+				id={note.id} 	
+				title={note.title}
+				format={note.format}
+				difficulty={note.difficulty}
+				content={note.content}
+				user_id={note.user_id}
+				generateDifficulty={generateDifficulty}
+				user={note.user}
+				/>
+		))
 	return (
 		<div>
-			<h2 class="notes title">Notes Page</h2>
+			<br/>
+			<div width="fit-content" class="ui icon input">
+				<input value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Search Notes..."/>
+				<i aria-hidden="true" class="search circular inverted link icon"></i>
+			</div>
+			<br/>
 			<table class="ui celled padded table">
-				<thead>
+				<thead background="red">
 					<tr>
-						<th>Created By</th>
-						<th>Note Title</th>
+						<th>User</th>
+						<th>Note</th>
 						<th>Difficulty</th>
 						<th>Format</th>
 					</tr>
@@ -41,12 +44,8 @@ function Notes(props) {
 					{singleNote}
 				</tbody>
 			</table>
-
-			<Comments />
-			{/* <AddNote />
-			<AddComment /> */}
 		</div>
-	);
+	)
 }
 
 export default Notes;
