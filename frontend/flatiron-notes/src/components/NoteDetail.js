@@ -70,7 +70,7 @@ function NoteDetail(props) {
 			.then(setToggle(!toggle));
 		setFormData("");
 	}
-	function handleDeleteNote() {
+	function handleDeleteNote(id) {
 		fetch(`http://localhost:9292/notes/${id}`, {
 			method: "DELETE",
 		});
@@ -143,7 +143,7 @@ function NoteDetail(props) {
 									</Link>
 									<Label
 										color="red"
-										onClick={handleDeleteNote}
+										onClick={(e) => handleDelete(id)}
 									>
 										Delete Note
 									</Label>

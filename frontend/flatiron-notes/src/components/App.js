@@ -7,6 +7,7 @@ import Body from "./Body";
 
 function App() {
 	console.log("You made it past initalization");
+
 	return (
 		<div className="App">
 			<Header />
