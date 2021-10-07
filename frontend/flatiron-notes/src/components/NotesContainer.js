@@ -10,14 +10,14 @@ function NotesContainer(props) {
 
 	return (
 		<div className="column1">
+			<Link to={`/notes/${id}`}>
 			<span className="note-link-obj">
-				<Link to={`/notes/${id}`}>
 					<h2>{title}</h2>
-				</Link>
 				<h4>Format: {format}</h4>
 				<p>Difficulty: {starsNum} </p>
 				<h4>Uploaded by: {user.name}</h4>
 			</span>
+			</Link>
 			<br />
 		</div>
 	);

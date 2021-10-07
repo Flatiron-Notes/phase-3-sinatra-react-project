@@ -3,8 +3,10 @@ import { Button, Form, Input, Select, Container } from "semantic-ui-react";
 //////////////////////////
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { useHistory } from 'react-router-dom';
 
-function AddNote({ setToggle, toggle }) {
+function AddNote({ setToggle, toggle, fetching }) {
+	let history = useHistory();
 	const [formData, setFormData] = useState({
 		title: "",
 		content: "",
@@ -68,9 +70,10 @@ function AddNote({ setToggle, toggle }) {
 					format: "",
 					difficulty: "",
 					user_id: 1,
-				});
-				setToggle(!toggle);
-			});
+				})
+			}, 
+				history.push("/notes"), fetching()
+	);
 	};
 
 	return (

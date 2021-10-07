@@ -41,6 +41,7 @@ function Body() {
 					<Homepage
 						allNotes={allNotes}
 						generateDifficulty={generateDifficulty}
+
 					/>
 				</Route>
 				<Route exact path="/notes">
@@ -54,12 +55,12 @@ function Body() {
 					<EditNote />
 				</Route>
 				<Route exact path="/notes/:id">
-					<NoteDetail allNotes={allNotes} />
+					<NoteDetail allNotes={allNotes} fetching={fetching} />
 				</Route>
 
 				<Route exact path="/new_note">
 					<h1>Add New Note</h1>
-					<AddNote setToggle={setToggle} toggle={toggle} />
+					<AddNote setToggle={setToggle} fetching={fetching} toggle={toggle} />
 				</Route>
 			</Switch>
 		</div>

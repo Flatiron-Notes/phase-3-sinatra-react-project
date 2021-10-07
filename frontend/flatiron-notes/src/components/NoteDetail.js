@@ -13,7 +13,7 @@ import {
 } from "semantic-ui-react";
 
 function NoteDetail(props) {
-	const { allNotes } = props;
+	const { allNotes, fetching } = props;
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [loadedNote, setLoadedNote] = useState({});
 	const [posterName, setPosterName] = useState("");
@@ -73,7 +73,9 @@ function NoteDetail(props) {
 	function handleDeleteNote(id) {
 		fetch(`http://localhost:9292/notes/${id}`, {
 			method: "DELETE",
-		});
+		})
+		.then((resp) => resp.json())
+		.then(history.push("/"), fetching());
 	}
 	function deleteComment(commentId) {
 		fetch(`http://localhost:9292/comments/${commentId}`, {
@@ -138,15 +140,10 @@ function NoteDetail(props) {
 									<Label color="green">
 										Difficulty: {difficulty}
 									</Label>
+									<Label color="red" onClick={(e) => handleDeleteNote(id)} > Delete Note </Label>
 									<Link to={`/notes/${id}/edit`}>
-										<Label color="blue">Edit Note</Label>
+										<Label color="blue">Edit Note </Label>
 									</Link>
-									<Label
-										color="red"
-										onClick={(e) => handleDelete(id)}
-									>
-										Delete Note
-									</Label>
 								</Label.Group>
 							</Container>
 						</Grid.Column>
