@@ -89,6 +89,7 @@ function EditNote() {
 					difficulty: "",
 					user_id: "",
 				});
+				setContentData("");
 			});
 	};
 
