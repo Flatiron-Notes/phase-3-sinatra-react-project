@@ -6,6 +6,7 @@ import Notes from "./Notes";
 import Homepage from "./Homepage";
 import NoteDetail from "./NoteDetail";
 import AddNote from "./AddNote";
+import EditNote from "./EditNote";
 
 function Body() {
 	const [allNotes, setAllNotes] = useState([]);
@@ -48,10 +49,14 @@ function Body() {
 						generateDifficulty={generateDifficulty}
 					/>
 				</Route>
-				<Route path="/notes/:id">
+				<Route exact path="/notes/:id/edit">
+					<EditNote />
+				</Route>
+				<Route exact path="/notes/:id">
 					<NoteDetail allNotes={allNotes} />
 				</Route>
-				<Route path="/new_note">
+
+				<Route exact path="/new_note">
 					<h1>Add New Note</h1>
 					<AddNote setToggle={setToggle} toggle={toggle} />
 				</Route>

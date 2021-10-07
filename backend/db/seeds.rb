@@ -12,7 +12,7 @@ puts "🌱 Seeding Notes..."
         title: Faker::Lorem.paragraph_by_chars(number: 10, supplemental: false),
         content: Faker::Lorem.paragraph_by_chars(number: 30, supplemental: false),
         format: formats[rand(1..5)],
-        difficulty: rand(1..10),
+        difficulty: rand(1..5),
         user_id: rand(1..5) 
     )
 end
@@ -29,7 +29,7 @@ puts "🌱 Seeding Comments..."
 
 100.times do
     user = User.find(rand(1..5))
-    Comment.create(name: user.name,  text: Faker::Lorem.paragraph_by_chars(number: 30, supplemental: false), user_id: user.id, note_id: rand(1..20))
+    Comment.create(name: user.name,  text: Faker::Lorem.paragraph_by_chars(number: 250, supplemental: false), user_id: user.id, note_id: rand(1..20))
 end
 
 puts "✅ Done seeding!"

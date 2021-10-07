@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import Comments from "./Comments";
 //import styled from 'styled-components';
 import {
@@ -9,7 +9,9 @@ import {
 	Header,
 	Grid,
 	Divider,
+	Button,
 } from "semantic-ui-react";
+
 function NoteDetail(props) {
 	const { allNotes } = props;
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -81,6 +83,8 @@ function NoteDetail(props) {
 	}
 
 	console.log(formData);
+
+	function handleEdit() {}
 	return (
 		<div className="detailed-note-obj">
 			{/* <h1>{title}</h1>
@@ -129,6 +133,9 @@ function NoteDetail(props) {
 									<Label color="green">
 										Difficulty: {difficulty}
 									</Label>
+									<Link to={`/notes/${id}/edit`}>
+										<Label color="red">Edit Note</Label>
+									</Link>
 								</Label.Group>
 							</Container>
 						</Grid.Column>
