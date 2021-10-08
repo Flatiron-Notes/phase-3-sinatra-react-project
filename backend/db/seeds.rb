@@ -11,7 +11,7 @@ puts "🌱 Seeding Notes..."
     Note.create(
         title: Faker::Lorem.paragraph_by_chars(number: 10, supplemental: false),
         content: Faker::Lorem.paragraph_by_chars(number: 30, supplemental: false),
-        format: formats[rand(1..5)],
+        format: formats[rand(0..4)],
         difficulty: rand(1..5),
         user_id: rand(1..5) 
     )
