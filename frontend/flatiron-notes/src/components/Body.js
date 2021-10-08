@@ -19,15 +19,14 @@ function Body() {
 			.then((r) => r.json())
 			.then((data) => {
 				setAllNotes(data)
-				setToggle(!toggle)
+				// setToggle(!toggle)
 			})
-			
 	}
 
 	useEffect(() => {
 		console.log("Re-Running...");
 		fetching();
-	}, []);
+	}, [!toggle]);
 
 	function generateDifficulty(difficultyNum) {
 		const starEmoji = "⭐";
@@ -59,15 +58,16 @@ function Body() {
 					/>
 				</Route>
 				<Route exact path="/notes/:id/edit">
-					<EditNote />
+					<EditNote toggle={toggle} setToggle={setToggle} />
 				</Route>
 				<Route exact path="/notes/:id">
-					<NoteDetail allNotes={allNotes} fetching={fetching} triggerBodyToggle={triggerBodyToggle} />
+					<NoteDetail allNotes={allNotes} toggle={toggle} setToggle={setToggle} triggerBodyToggle={triggerBodyToggle} />
 				</Route>
 
 				<Route exact path="/new_note">
-					<h1>Add New Note</h1>
-					<AddNote setToggle={setToggle} fetching={fetching} toggle={toggle} />
+					<br/>
+					<h1>Create Note</h1>
+					<AddNote setToggle={setToggle} toggle={toggle} />
 				</Route>
 			</Switch>
 		</div>

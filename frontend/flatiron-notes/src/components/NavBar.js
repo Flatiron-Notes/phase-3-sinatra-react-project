@@ -44,7 +44,7 @@ function NavBar() {
 							// active={activeItem === "new_note"}
 							// onClick={handleItemClick}
 						>
-							Add new note
+							Create
 						</Menu.Item>
 					</Link> : null
 				}

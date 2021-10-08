@@ -15,19 +15,19 @@ import {
 } from "semantic-ui-react";
 
 function NoteDetail(props) {
-	const { allNotes, fetching, triggerBodyToggle } = props;
+	const { allNotes, setToggle, toggle, triggerBodyToggle } = props;
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [loadedNote, setLoadedNote] = useState({});
 	const [posterName, setPosterName] = useState("");
 	const [noteComments, setNoteComments] = useState([]);
 	const [formData, setFormData] = useState("");
-	const [toggle, setToggle] = useState(false);
 
 	const { title, format, difficulty, user, comments, content, user_id } =
 		loadedNote;
 
 	const isLoggedInId = parseInt(localStorage.getItem("user_id"))
 	const isLoggedInUsername = (localStorage.getItem("username"))
+	const isLoggedIn = (localStorage.getItem("isLoggedIn"))
 
 	const id = parseInt(useParams().id);
 	let history = useHistory();
@@ -78,7 +78,7 @@ function NoteDetail(props) {
 			method: "DELETE",
 		})
 		.then((resp) => resp.json())
-		.then(fetching(), history.push("/notes/"));
+		.then(setToggle(!toggle), history.push("/notes/"));
 	}
 	function deleteComment(commentId) {
 		fetch(`http://localhost:9292/comments/${commentId}`, {
@@ -94,7 +94,6 @@ function NoteDetail(props) {
 
 	console.log(formData);
 
-	function handleEdit() {}
 	return (
 		<div className="detailed-note-obj">
 			<div className="noteDetail">
@@ -141,6 +140,7 @@ function NoteDetail(props) {
 							{singleComment}
 						</div>
 					</div>
+					{isLoggedIn?
 					<div className="comment form">
 						<form onSubmit={handleSubmit} className="ui reply form">
 							<div className="form">
@@ -159,7 +159,8 @@ function NoteDetail(props) {
 								Add Comment
 							</button>
 						</form>
-					</div>
+					</div> 
+					: null}
 				</Container>
 			</div>
 		</div>

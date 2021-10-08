@@ -42,7 +42,7 @@ table.ui.celled.padded.table {
   width:max-content;  
   padding: 25px;
   text-align: center;
-  background-color:rgba(226, 236, 248, 0.945);
+  background-color:ivory;
   border: rgb(5, 5, 5) solid 1px;
   /* display: inline-grid; */
   box-shadow: 3px 4px #0c0c0b
@@ -65,4 +65,24 @@ div.comment.form {
   margin: auto;
   width: 400px;
   padding-bottom: 20px;
+}
+
+.homepage-title {
+  font-style: italic;
+}
+
+.homepage-text {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.column1 {
+  background-color: bisque;
+}
+
+.ui.menu {
+  max-height: 10px;
+}
+.add_note {
+  padding-bottom: 40px;
+  max-height: 100px,
 }

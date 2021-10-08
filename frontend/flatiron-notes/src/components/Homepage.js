@@ -1,7 +1,7 @@
 import NotesContainer from "./NotesContainer";
 
 function Homepage(props) {
-	const { allNotes, fetching, generateDifficulty } = props;
+	const { allNotes, generateDifficulty } = props;
 
 	const recentNotes = allNotes.slice(-10);
 	console.log(allNotes);
@@ -23,11 +23,13 @@ function Homepage(props) {
 
 	return (
 		<div>
-			<h1>Flatiron Noteshare</h1>
-			<h4> Welcome to the Flatiron School Noteshare! If you have a notes file you would like to share, simply log in to the application and click on the 'Add A Note' tab. </h4>
-			<h4> If you would like to see a full list of student notes uploaded, click on the 'Notes' tab above</h4>
 			<br />
-			<h4> Most Recent Note Uploads!</h4>
+			<h1 class="homepage-title">Welcome to Flatiron Noteshare</h1>
+			<p class="homepage-text"> If you have a notes file you would like to share, simply log in to the application and click on the 'Add A Note' tab.
+			<br/> If you would like to see a full list of student notes uploaded, click on the 'Notes' tab above </p>
+			<br />
+			<h2>Recent Notes</h2>
+			<br />
 			<div className="row1">{formattedRecentNotes}</div>
 		</div>
 	);

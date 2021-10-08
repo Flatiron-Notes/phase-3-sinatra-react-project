@@ -5,7 +5,8 @@ import { Button, Form, Input, Select, Container } from "semantic-ui-react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-function EditNote() {
+function EditNote(props) {
+	const {setToggle, toggle} = props
 	const [editData, setEditData] = useState("");
 	const [contentData, setContentData] = useState("");
 	const id = parseInt(useParams().id);
@@ -80,17 +81,17 @@ function EditNote() {
 		};
 		fetch(`http://localhost:9292/notes/${id}`, requestOptions)
 			.then((response) => response.json())
-			.then((data) => {
-				console.log(data);
+			.then((data) => (
 				setFormData({
 					title: "",
 					content: "",
 					format: "",
 					difficulty: "",
 					user_id: "",
-				});
-				setContentData("");
-			});
+				}),
+				setContentData("")
+			))
+			.then(setToggle(!toggle), history.push("/notes/"))
 	};
 
 	return (

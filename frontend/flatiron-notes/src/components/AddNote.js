@@ -5,14 +5,15 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useHistory } from 'react-router-dom';
 
-function AddNote({ setToggle, toggle, fetching }) {
+function AddNote({ setToggle, toggle }) {
 	let history = useHistory();
+	const isLoggedInId = localStorage.getItem("user_id")
 	const [formData, setFormData] = useState({
 		title: "",
 		content: "",
 		format: "",
 		difficulty: "",
-		user_id: 1,
+		user_id: isLoggedInId,
 	});
 
 	const optionsDifficulty = [
@@ -69,10 +70,10 @@ function AddNote({ setToggle, toggle, fetching }) {
 					content: "",
 					format: "",
 					difficulty: "",
-					user_id: 0,
+					user_id: isLoggedInId,
 				})
 			}, 
-			fetching(), history.push(`/notes/`)
+			setToggle(!toggle), history.push(`/notes/`)
 	);
 	};
 
