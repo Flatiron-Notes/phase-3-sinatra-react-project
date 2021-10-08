@@ -17,7 +17,11 @@ function Body() {
 	function fetching() {
 		fetch("http://localhost:9292/notes")
 			.then((r) => r.json())
-			.then((data) => setAllNotes(data));
+			.then((data) => {
+				setAllNotes(data)
+				setToggle(!toggle)
+			})
+			
 	}
 
 	useEffect(() => {
@@ -34,6 +38,10 @@ function Body() {
 		return difficultyRating;
 	}
 
+	function triggerBodyToggle(){
+		setToggle(!toggle)
+	}
+
 	return (
 		<div className="body-div">
 			<Switch>
@@ -41,7 +49,6 @@ function Body() {
 					<Homepage
 						allNotes={allNotes}
 						generateDifficulty={generateDifficulty}
-
 					/>
 				</Route>
 				<Route exact path="/notes">
@@ -55,7 +62,7 @@ function Body() {
 					<EditNote />
 				</Route>
 				<Route exact path="/notes/:id">
-					<NoteDetail allNotes={allNotes} fetching={fetching} />
+					<NoteDetail allNotes={allNotes} fetching={fetching} triggerBodyToggle={triggerBodyToggle} />
 				</Route>
 
 				<Route exact path="/new_note">

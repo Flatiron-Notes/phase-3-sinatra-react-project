@@ -8,7 +8,7 @@ function NavBar() {
 	// function handleItemClick(e) {
 	// 	setActiveItem(e.target.name);
 	// }
-  const [loggedInStatus, setLoggedInStatus] = useState(false)
+  const [loggedInStatus, setLoggedInStatus] = useState(localStorage.getItem("isLoggedIn"))
   console.log(loggedInStatus)
   function retrieveLoggedInStatus(lis) {
 	  setLoggedInStatus(lis)

@@ -15,13 +15,11 @@ import {
 } from "semantic-ui-react";
 
 function NoteDetail(props) {
-	const { allNotes, fetching } = props;
+	const { allNotes, fetching, triggerBodyToggle } = props;
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [loadedNote, setLoadedNote] = useState({});
 	const [posterName, setPosterName] = useState("");
 	const [noteComments, setNoteComments] = useState([]);
-	const [newComment, setNewComment] = useState("");
-	const [commentUser, setCommentUser] = useState("TESTUSER");
 	const [formData, setFormData] = useState("");
 	const [toggle, setToggle] = useState(false);
 
@@ -29,6 +27,7 @@ function NoteDetail(props) {
 		loadedNote;
 
 	const isLoggedInId = parseInt(localStorage.getItem("user_id"))
+	const isLoggedInUsername = (localStorage.getItem("username"))
 
 	const id = parseInt(useParams().id);
 	let history = useHistory();
@@ -65,8 +64,8 @@ function NoteDetail(props) {
 			},
 			body: JSON.stringify({
 				note_id: id,
-				user_id: 1,
-				name: "Peter",
+				user_id: isLoggedInId,
+				name: isLoggedInUsername,
 				text: formData,
 			}),
 		})
@@ -79,7 +78,7 @@ function NoteDetail(props) {
 			method: "DELETE",
 		})
 		.then((resp) => resp.json())
-		.then(history.push("/"), fetching());
+		.then(fetching(), history.push("/notes/"));
 	}
 	function deleteComment(commentId) {
 		fetch(`http://localhost:9292/comments/${commentId}`, {
@@ -98,34 +97,6 @@ function NoteDetail(props) {
 	function handleEdit() {}
 	return (
 		<div className="detailed-note-obj">
-			{/* <h1>{title}</h1>
-        <h3>Uploaded by: {posterName}</h3>
-        <h4>Format: {format}</h4>
-        <h4>Difficulty Rating: {difficulty} /10</h4>
-        <br/>
-        <p>{content}</p>
-
-
-
-        <div class="ui comments">
-            <br/>
-            <h3 class="ui dividing header">Comments</h3>
-            {singleComment}
-        </div>
-        <br/>
-        <div class="comment form">
-            <form onSubmit={handleSubmit} class="ui reply form">
-                <div class="form">
-                    <textarea onChange={(e) => setFormData(e.target.value)} value={formData} type="input" rows="3"></textarea>
-                </div>
-                <br/>
-                <button class="ui icon primary left labeled button">
-                    <i aria-hidden="true" class="edit icon"></i>
-                    Add Comment
-                </button>
-            </form>
-        </div>
-        <br/> */}
 			<div className="noteDetail">
 				<Container>
 					<Grid columns={2} relaxed="very">
