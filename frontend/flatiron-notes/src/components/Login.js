@@ -92,7 +92,7 @@ function Login(props) {
 									onChange={(e) =>
 										setPasswordInput(e.target.value)
 									}
-									placeholder="Last Name"
+									placeholder="Password"
 								/>
 							</Form.Field>
 							<Button type="submit">Log In</Button>
