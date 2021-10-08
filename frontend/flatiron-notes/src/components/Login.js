@@ -78,12 +78,12 @@ function Login(props) {
 					{!isLoggedIn ? (
 						<Form onSubmit={handleLogInAttempt}>
 							<Form.Field>
-								<label>First Name</label>
+								<label>User Name</label>
 								<input
 									onChange={(e) =>
 										setUserNameInput(e.target.value)
 									}
-									placeholder="First Name"
+									placeholder="User Name"
 								/>
 							</Form.Field>
 							<Form.Field>
